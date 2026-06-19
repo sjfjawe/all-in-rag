@@ -1,0 +1,33 @@
+{
+  // "name": "all-in-rag",
+  // "image": "mcr.microsoft.com/devcontainers/python:3.12",
+  // "postCreateCommand": "pip install -r code/requirements.txt",
+  // "remoteEnv": {
+  //   "HUGGINGFACE_TOKEN": "${localEnv:HUGGINGFACE_KEY_RAG_JUN26}"
+  // }
+
+  "name": "RAG Development Environment",
+  "image": "frejanah/rag-codespace:latest",
+  
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance"
+      ]
+    }
+  },
+
+  "remoteUser": "root",
+  
+  "postCreateCommand": "echo '✅ Environment for /all-in/rag is ready! All packages from docker pre-installed.'",
+  
+  "forwardPorts": [8888, 8000],
+  
+  "portsAttributes": {
+    "8888": {
+      "label": "Jupyter",
+      "onAutoForward": "notify"
+    }
+  }
+}
