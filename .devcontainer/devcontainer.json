@@ -6,11 +6,18 @@
   //   "HUGGINGFACE_TOKEN": "${localEnv:HUGGINGFACE_KEY_RAG_JUN26}"
   // }
 
-  "name": "RAG Development Environment",
+ "name": "RAG Development Environment",
   "image": "frejanah/rag-codespace:latest",
-  
+
   "customizations": {
     "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python3",
+        "python.analysis.extraPaths": [
+          "/root/.local/lib/python3.11/site-packages",
+          "/usr/local/lib/python3.11/site-packages"
+        ]
+      },
       "extensions": [
         "ms-python.python",
         "ms-python.vscode-pylance"
@@ -19,12 +26,14 @@
   },
 
   "remoteUser": "root",
-  
-  "postCreateCommand": "pip install -r code/requirements.txt",
-  // "echo '✅ Environment for /all-in/rag is ready! All packages from docker pre-installed.'",
-  
+
+  "containerEnv": {
+    "PATH": "/usr/local/bin:${containerEnv:PATH}",
+    "PYTHONPATH": "/root/.local/lib/python3.11/site-packages:/usr/local/lib/python3.11/site-packages"
+  },
+
   "forwardPorts": [8888, 8000],
-  
+
   "portsAttributes": {
     "8888": {
       "label": "Jupyter",
