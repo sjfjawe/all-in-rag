@@ -20,7 +20,8 @@
 
   "remoteUser": "root",
   
-  "postCreateCommand": "echo '✅ Environment for /all-in/rag is ready! All packages from docker pre-installed.'",
+  "postCreateCommand": "pip install -r code/requirements.txt",
+  // "echo '✅ Environment for /all-in/rag is ready! All packages from docker pre-installed.'",
   
   "forwardPorts": [8888, 8000],
   
